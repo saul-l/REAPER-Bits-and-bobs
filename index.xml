@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="ReaPack Repository Template" commit="58a3e39ba95bd0f35846aa1f39aa4cb2574295e1">
+<index version="1" name="ReaPack Repository Template" commit="798b5a15a818403636e086e89a84e8061d31e1d6">
   <category name="Example">
     <reapack name="cfillion_Hello world.lua" type="script" desc="Hello world">
       <metadata>
@@ -18,6 +18,47 @@ Markdown
       </metadata>
       <version name="1.0" author="cfillion" time="2021-01-04T23:30:32Z">
         <source main="main">https://github.com/cfillion/reapack-repository-template/raw/58a3e39ba95bd0f35846aa1f39aa4cb2574295e1/Example/cfillion_Hello%20world.lua</source>
+      </version>
+    </reapack>
+  </category>
+  <category name="NextVariation">
+    <reapack name="NextVariation.lua" type="script" desc="NextVariation">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 Reascript action for finding next variation in audio item. Uses built-in transient detection, which can be configured under action "Transient detection sensitivity/threshold: Adjust..."\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 newItemList = \{\}\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 function SaveSelectedItems(t) local t = t or \{\} for i = 0, reaper.CountSelectedMediaItems(0)-1 do t[i+1] = reaper.GetSelectedMediaItem(0, i) end return t end\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 function RestoreSelectedItems( items ) for i, item in ipairs( newItemList ) do reaper.SetMediaItemSelected( item, true ) end end\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 -- Main function function Main() for i, item in ipairs(init_sel_items) do\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 reaper.SelectAllMediaItems(0, false) selectedItem = item itemLength = reaper.GetMediaItemInfo_Value(selectedItem, "D_LENGTH" ) itemPosition = reaper.GetMediaItemInfo_Value(selectedItem, "D_POSITION" ) itemFadeInCurve = reaper.GetMediaItemInfo_Value(selectedItem, "C_FADEINSHAPE" ) itemFadeInLength = reaper.GetMediaItemInfo_Value(selectedItem, "D_FADEINLEN" ) itemTrack = reaper.GetMediaItemTrack(selectedItem) reaper.SetMediaItemSelected(selectedItem, 1 ) reaper.SetOnlyTrackSelected(itemTrack) reaper.SetMediaItemInfo_Value(selectedItem, "D_LENGTH", 1000) reaper.SetEditCurPos(itemPosition,0,0)\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \f1 -- Create new item for empty track to prevent other items messing up the process\line
+reaper.Main_OnCommand(40001,0) -- insert track\line
+newTrack=reaper.GetSelectedTrack(0, 0) \line
+reaper.MoveMediaItemToTrack(selectedItem,newTrack)\line
+reaper.SetEditCurPos(itemPosition,0,0)\line
+reaper.Main_OnCommand(40375,0) -- move cursor to next transient\line
+reaper.Main_OnCommand(40012,0) -- split\line
+newItem=reaper.GetSelectedMediaItem(0,0)\line
+reaper.SetMediaItemInfo_Value(newItem, "D_LENGTH", itemLength)\line
+reaper.SetMediaItemInfo_Value(newItem, "D_POSITION", itemPosition)\line
+reaper.SetMediaItemInfo_Value(newItem, "C_FADEINSHAPE", itemFadeInCurve)\line
+reaper.SetMediaItemInfo_Value(newItem, "D_FADEINLEN", itemFadeInLength)\line
+\line
+reaper.MoveMediaItemToTrack(newItem,itemTrack)\line
+reaper.DeleteTrack(newTrack)\line
+table.insert(newItemList, reaper.GetSelectedMediaItem(0, 0))\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 end\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 end\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 -- INIT function Init() cursorPosition= reaper.GetCursorPosition()\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 -- See if there is items selected count_sel_items = reaper.CountSelectedMediaItems(0) if count_sel_items == 0 then return false end reaper.PreventUIRefresh(1) reaper.Undo_BeginBlock() init_sel_items = SaveSelectedItems() Main() RestoreSelectedItems(init_sel_items) reaper.Undo_EndBlock("NextVariation", -1) reaper.SetEditCurPos(cursorPosition,1,0) reaper.PreventUIRefresh(-1) reaper.UpdateArrange() end function wait(seconds) local start = os.time() repeat until os.time() > start + seconds end if not preset_file_init then Init() end\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.0" author="Sauli Lehtinen / Demoji" time="2022-03-14T11:29:49Z">
+        <source main="main">https://github.com/Demoji-x/REAPER-Bits-and-bobs/raw/798b5a15a818403636e086e89a84e8061d31e1d6/NextVariation/NextVariation.lua</source>
       </version>
     </reapack>
   </category>
