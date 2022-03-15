@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="ReaPack Repository Template" commit="f2774886c0abb3d2b26b52693674391c453ee1fd">
+<index version="1" name="Reaper Bits and bobs" commit="f2774886c0abb3d2b26b52693674391c453ee1fd">
   <category name="NextVariation">
     <reapack name="NextVariation.lua" type="script" desc="NextVariation">
       <metadata>
