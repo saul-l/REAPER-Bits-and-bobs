@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="Reaper Bits and bobs" commit="74e906d7b987b20922dd2caec746ce846cf47729">
+<index version="1" name="Reaper Bits and bobs" commit="b426d1743618c462a5d3e692ca28245964d954d6">
   <category name="NextVariation">
-    <reapack name="NextVariation.lua" type="script" desc="NextVariation">
+    <reapack name="NextVariation.lua" type="script" desc="Next Variation">
       <metadata>
         <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
 {\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
 \widowctrl\hyphauto
 
-{\pard \ql \f0 \sa180 \li0 \fi0 Sets content of selected audio item to next variation found. Perfect for sound designers working with recordings containing multiple variations in single file.\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 Uses built-in transient detection, which can be configured with action "Transient decetion sensitivity/threshold: Adjust..."\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 Usage example:\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Add audio file containing multiple variations of sound into timeline\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Trim item to contain only first variation\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Select item and run script\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Item should now have next variation\sa180\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 1.0 release highlights:\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Supports multiple selected items at a same time\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 Next Variation\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Sets content of selected audio item to next variation found. Perfect for sound designers working with recordings containing multiple variations in single file. Uses built-in transient detection, which can be configured action "Transient detection sensitivity/threshold: Adjust..."\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Example usage:\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Add audio file containing multiple sounds into timeline\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Trim first sound variation from the audio item\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Select audio item and run the script\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab It should now contain the second variation in audio file\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Features:\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Supports multiple selected items\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Uses separate tracks for item manipulation, so shouldn't mess with unselected track content\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Loops through item content, if Loop source is enabled\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Preserves item fade information\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Smarter UI update disabling, which gives huge performance boost\sa180\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Preserves item fade information\sa180\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Known issues and workaround:\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Built-in transient detection is not content aware and therefor you often have to choose between getting false positives or not finding the next variation. False positives are not really a big issue, since you can just run the script again (using keyboard shortcut strongly recommended). Sensitivity 35%, Threshold -24db settings seem to work fine (= a bit too false positive happy, but not missing anything) with most audio content.\sa180\par}
 }
@@ -27,6 +26,9 @@
       </metadata>
       <version name="1.0" author="Sauli Lehtinen / Demoji" time="2022-03-14T11:29:49Z">
         <source main="main">https://github.com/Demoji-x/REAPER-Bits-and-bobs/raw/798b5a15a818403636e086e89a84e8061d31e1d6/NextVariation/NextVariation.lua</source>
+      </version>
+      <version name="1.01" author="Demoji / Sauli" time="2022-03-15T12:34:16Z">
+        <source main="main">https://github.com/Demoji-x/REAPER-Bits-and-bobs/raw/b426d1743618c462a5d3e692ca28245964d954d6/NextVariation/NextVariation.lua</source>
       </version>
     </reapack>
   </category>
