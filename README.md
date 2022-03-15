@@ -1,6 +1,6 @@
 # Reaper Bits and bobs
 
-Repository for my random reaper scripts and jsfx
+ReaPack compatible repository for my random REAPER scripts and jsfx
 
 Currently content:
 
