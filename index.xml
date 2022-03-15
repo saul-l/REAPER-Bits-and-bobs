@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="Reaper Bits and bobs" commit="f2774886c0abb3d2b26b52693674391c453ee1fd">
+<index version="1" name="Reaper Bits and bobs" commit="74e906d7b987b20922dd2caec746ce846cf47729">
   <category name="NextVariation">
     <reapack name="NextVariation.lua" type="script" desc="NextVariation">
       <metadata>
@@ -7,32 +7,21 @@
 {\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
 \widowctrl\hyphauto
 
-{\pard \ql \f0 \sa180 \li0 \fi0 Reascript action for finding next variation in audio item. Uses built-in transient detection, which can be configured under action "Transient detection sensitivity/threshold: Adjust..."\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 newItemList = \{\}\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 function SaveSelectedItems(t) local t = t or \{\} for i = 0, reaper.CountSelectedMediaItems(0)-1 do t[i+1] = reaper.GetSelectedMediaItem(0, i) end return t end\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 function RestoreSelectedItems( items ) for i, item in ipairs( newItemList ) do reaper.SetMediaItemSelected( item, true ) end end\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 -- Main function function Main() for i, item in ipairs(init_sel_items) do\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 reaper.SelectAllMediaItems(0, false) selectedItem = item itemLength = reaper.GetMediaItemInfo_Value(selectedItem, "D_LENGTH" ) itemPosition = reaper.GetMediaItemInfo_Value(selectedItem, "D_POSITION" ) itemFadeInCurve = reaper.GetMediaItemInfo_Value(selectedItem, "C_FADEINSHAPE" ) itemFadeInLength = reaper.GetMediaItemInfo_Value(selectedItem, "D_FADEINLEN" ) itemTrack = reaper.GetMediaItemTrack(selectedItem) reaper.SetMediaItemSelected(selectedItem, 1 ) reaper.SetOnlyTrackSelected(itemTrack) reaper.SetMediaItemInfo_Value(selectedItem, "D_LENGTH", 1000) reaper.SetEditCurPos(itemPosition,0,0)\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 \f1 -- Create new item for empty track to prevent other items messing up the process\line
-reaper.Main_OnCommand(40001,0) -- insert track\line
-newTrack=reaper.GetSelectedTrack(0, 0) \line
-reaper.MoveMediaItemToTrack(selectedItem,newTrack)\line
-reaper.SetEditCurPos(itemPosition,0,0)\line
-reaper.Main_OnCommand(40375,0) -- move cursor to next transient\line
-reaper.Main_OnCommand(40012,0) -- split\line
-newItem=reaper.GetSelectedMediaItem(0,0)\line
-reaper.SetMediaItemInfo_Value(newItem, "D_LENGTH", itemLength)\line
-reaper.SetMediaItemInfo_Value(newItem, "D_POSITION", itemPosition)\line
-reaper.SetMediaItemInfo_Value(newItem, "C_FADEINSHAPE", itemFadeInCurve)\line
-reaper.SetMediaItemInfo_Value(newItem, "D_FADEINLEN", itemFadeInLength)\line
-\line
-reaper.MoveMediaItemToTrack(newItem,itemTrack)\line
-reaper.DeleteTrack(newTrack)\line
-table.insert(newItemList, reaper.GetSelectedMediaItem(0, 0))\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 end\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 end\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 -- INIT function Init() cursorPosition= reaper.GetCursorPosition()\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 -- See if there is items selected count_sel_items = reaper.CountSelectedMediaItems(0) if count_sel_items == 0 then return false end reaper.PreventUIRefresh(1) reaper.Undo_BeginBlock() init_sel_items = SaveSelectedItems() Main() RestoreSelectedItems(init_sel_items) reaper.Undo_EndBlock("NextVariation", -1) reaper.SetEditCurPos(cursorPosition,1,0) reaper.PreventUIRefresh(-1) reaper.UpdateArrange() end function wait(seconds) local start = os.time() repeat until os.time() > start + seconds end if not preset_file_init then Init() end\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Sets content of selected audio item to next variation found. Perfect for sound designers working with recordings containing multiple variations in single file.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Uses built-in transient detection, which can be configured with action "Transient decetion sensitivity/threshold: Adjust..."\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Usage example:\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Add audio file containing multiple variations of sound into timeline\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Trim item to contain only first variation\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Select item and run script\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Item should now have next variation\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 1.0 release highlights:\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Supports multiple selected items at a same time\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Uses separate tracks for item manipulation, so shouldn't mess with unselected track content\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Loops through item content, if Loop source is enabled\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Preserves item fade information\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Smarter UI update disabling, which gives huge performance boost\sa180\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Known issues and workaround:\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Built-in transient detection is not content aware and therefor you often have to choose between getting false positives or not finding the next variation. False positives are not really a big issue, since you can just run the script again (using keyboard shortcut strongly recommended). Sensitivity 35%, Threshold -24db settings seem to work fine (= a bit too false positive happy, but not missing anything) with most audio content.\sa180\par}
 }
 ]]></description>
       </metadata>
@@ -47,7 +36,7 @@ table.insert(newItemList, reaper.GetSelectedMediaItem(0, 0))\par}
 \widowctrl\hyphauto
 
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 Reaper Bits and bobs\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 Repository for my random reaper scripts and jsfx\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 ReaPack compatible repository for my random REAPER scripts and jsfx\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Currently content:\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Next Variation\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Sound design workflow improvement plugin for automatically moving item audio content start position to next variation.\sa180\par}
