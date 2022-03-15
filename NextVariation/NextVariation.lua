@@ -1,6 +1,6 @@
 -- @description Next Variation
 -- @author Demoji / Sauli
--- @version 1.0
+-- @version 1.01
 -- @about
 --   # Next Variation
 --
