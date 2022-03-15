@@ -1,28 +1,27 @@
--- desc: NextVariation
--- version: 1.0
--- author: Sauli Lehtinen / Demoji
--- about:
---  Sets content of selected audio item to next variation found. Perfect for sound designers working with recordings containing multiple variations in single file.
+-- @description Next Variation
+-- @author Demoji / Sauli
+-- @version 1.0
+-- @about
+--   # Next Variation
 --
---  Uses built-in transient detection, which can be configured with action "Transient decetion sensitivity/threshold: Adjust..."
+--   Sets content of selected audio item to next variation found. Perfect for sound designers working with recordings containing multiple variations in single file.
+--   Uses built-in transient detection, which can be configured action "Transient detection sensitivity/threshold: Adjust..."
 --
---  Usage example:
---  - Add audio file containing multiple variations of sound into timeline
---  - Trim item to contain only first variation
---  - Select item and run script
---  - Item should now have next variation
+--   Example usage:
+--   - Add audio file containing multiple sounds into timeline
+--   - Trim first sound variation from the audio item
+--   - Select audio item and run the script
+--   - It should now contain the second variation in audio file
 --
---  1.0 release highlights:
---  - Supports multiple selected items at a same time
---  - Uses separate tracks for item manipulation, so shouldn't mess with unselected track content
---  - Loops through item content, if Loop source is enabled
---  - Preserves item fade information
---  - Smarter UI update disabling, which gives huge performance boost
---
---  Known issues and workaround:
---  - Built-in transient detection is not content aware and therefor you often have to choose between getting false positives or not finding the next variation. False positives are not really a big issue, since you can just run the script again (using keyboard shortcut strongly recommended). Sensitivity 35%, Threshold -24db settings seem to work fine (= a bit too false positive happy, but not missing anything) with most audio content. 
--- changelog:
---  First public release
+--   Features:
+--   - Supports multiple selected items
+--   - Uses separate tracks for item manipulation, so shouldn't mess with unselected track content
+--   - Loops through item content, if Loop source is enabled
+--   - Preserves item fade information
+--   
+--   Known issues and workaround:
+--     - Built-in transient detection is not content aware and therefor you often have to choose between getting false positives or not finding the next variation. False positives are not really a big issue, since you can just run the script again (using keyboard shortcut strongly recommended). Sensitivity 35%, Threshold -24db settings seem to work fine (= a bit too false positive happy, but not missing anything) with most audio content. 
+
 
   newItemList = {}
   
