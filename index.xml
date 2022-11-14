@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="Reaper Bits and bobs" commit="b426d1743618c462a5d3e692ca28245964d954d6">
+<index version="1" name="Reaper Bits and bobs" commit="3a04f4ae5581055040033ba9e2e09f996dc95433">
   <category name="NextVariation">
     <reapack name="NextVariation.lua" type="script" desc="Next Variation">
       <metadata>
@@ -9,11 +9,12 @@
 
 {\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 Next Variation\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Sets content of selected audio item to next variation found. Perfect for sound designers working with recordings containing multiple variations in single file. Uses built-in transient detection, which can be configured action "Transient detection sensitivity/threshold: Adjust..."\par}
-{\pard \ql \f0 \sa180 \li0 \fi0 Example usage:\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Usage:\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Add audio file containing multiple sounds into timeline\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Trim first sound variation from the audio item\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Select audio item and run the script\par}
-{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab It should now contain the second variation in audio file\sa180\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab It should now contain the second variation in audio file\par}
+{\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab If results are not satisfactory configure the transient detection through action "Transient detection sensitivity/threshold: Adjust..."\sa180\par}
 {\pard \ql \f0 \sa180 \li0 \fi0 Features:\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Supports multiple selected items\par}
 {\pard \ql \f0 \sa0 \li360 \fi-360 \bullet \tx360\tab Uses separate tracks for item manipulation, so shouldn't mess with unselected track content\par}
