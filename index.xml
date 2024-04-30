@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="Sauli's REAPER Bits and bobs" commit="db75c820335d9f99b46441dd981fc5bd26f5b465">
+<index version="1" name="Sauli's REAPER Bits and bobs" commit="adc802bd4aa4c890840d6647ae727aa7f3b29ee8">
   <category name="NextVariation">
     <reapack name="NextVariation.lua" type="script" desc="Next Variation">
       <metadata>
@@ -33,6 +33,22 @@
       </version>
       <version name="1.02" author="saul-l / Sauli" time="2024-04-30T21:20:35Z">
         <source main="main">https://github.com/saul-l/REAPER-Bits-and-bobs/raw/db75c820335d9f99b46441dd981fc5bd26f5b465/NextVariation/NextVariation.lua</source>
+      </version>
+    </reapack>
+  </category>
+  <category name="SplitAndKeepFadeCurves">
+    <reapack name="SplitAndKeepFadeCurves.lua" type="script" desc="Split and Keep Fade Curves">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \b \fs36 Split and Keep Fade Curves\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.00" author="saul-l / Sauli" time="2024-04-30T22:12:43Z">
+        <source main="main">https://github.com/saul-l/REAPER-Bits-and-bobs/raw/adc802bd4aa4c890840d6647ae727aa7f3b29ee8/SplitAndKeepFadeCurves/SplitAndKeepFadeCurves.lua</source>
       </version>
     </reapack>
   </category>
