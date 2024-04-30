@@ -89,9 +89,8 @@ function get_script_path()
   if path_line == nil then
     reaper.ShowConsoleMsg(regionNamingToolActionName .. " not found! \n")
   else
-    path_line = string.reverse(path_line)
-    path_line = string.match(path_line, "(.-)\"")
-    path_line = string.reverse(path_line)
+    path_line = path_line:match("^.-\".-\"(.+)")
+    path_line = path_line:gsub("\"","")
   end
    
   path_line = path_line:sub(2)
@@ -106,16 +105,6 @@ function get_script_path()
   path_line = path_line:gsub("\\", "/")
     
   return path_line
-end
-
-function writeSettingsFile(path)
-  os.execute("cd /d " .. path .. " & mkdir RegionNamingTool")
-  file = io.open(path .. "/RegionNamingTool/RegionNamingToolSettings.lua", "w")
-  io.output(file)
-  io.write("textEditorExecutable = \"notepad.exe\"\n")
-  io.write("listBox1ValuesDefault = {\"\", \"AMB\", \"ENV\", \"OBJ\", \"PLR\", \"ENE\", \"NPC\", \"FX\", \"CINE\", \"UI\"}\n")
-  io.write("listBox2ValuesDefault = {\"\", \"movement\", \"skill\", \"vocal\", \"physics\", \"kinematic\", \"attack\", \"damage\", \"death\", \"jump\", \"shoot\", \"melee\", \"angular\", \"linear\", \"move\", \"roll\", \"collision\", \"loop\", \"start\", \"end\"}\n")
-  io.close(file)
 end
 
 -- serializeTable from stack overflow user Henrik Ilgen
@@ -314,7 +303,7 @@ script_path = get_script_path()
 if reaper.file_exists(script_path .. "/RegionNamingTool/RegionNamingToolSettings.lua") then
   dofile(script_path .. "/RegionNamingTool/RegionNamingToolSettings.lua")
 else
-   writeSettingsFile(script_path)  
+   reaper.ShowConsoleMsg("Settings file not found! \n")
 end
 
 
