@@ -1,6 +1,6 @@
 -- @description Next Variation
 -- @author saul-l / Sauli
--- @version 1.01
+-- @version 1.02
 -- @about
 --   # Next Variation
 --
