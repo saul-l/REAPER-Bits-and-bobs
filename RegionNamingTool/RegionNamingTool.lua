@@ -1,39 +1,41 @@
 -- @description Region Naming Tool
 -- @author saul-l / Sauli
 -- @version 1.00
+-- @provides:
+--   RegionNamingTool/*
 -- @about
--- Region naming tool
+--  # Region naming tool
 --
--- Requires Lokasenna's GUI library v2 for Lua.
--- ReaTeam Scripts has it. Use ReaPack to download it from this repo: https://github.com/ReaTeam/ReaScripts/raw/master/index.xml
--- or downloaded directly from here: https://github.com/jalovatt/Lokasenna_GUI
--- After you have installed it you might need to run action Script: Set Lokasenna_GUI v2 library path.lua
---
--- Basic usage:
--- Create regions in reaper
--- Create timeline selection which has the regions inside
--- Run the script
--- Select and/or type words to fields. (For example select PLR, empty field, footstep and type "dirt" into last textbox)
--- press rename-button. All regions inside timeline selection are renamed to specified word combination. (PLR_footstep_dirt in example)
--- Second list box supports multiselection with both control and shift. Items are always processed in order from top to bottom.
--- 
--- Settings:
--- Press global-button. Settings file should open in text editor.
--- textEditorExecutable is path of text editor which opens settings files. notepad.exe is used by default.
--- ListBox1ValuesDefault and listBox2ValuesDefault contain word list of two list boxes in RegionNamingTool UI. These are used when no project settings file is found.
--- projects contains paths to project-specific word lists. First value is project name and second name is path of project word list.
--- project-specific word list is used if project name is found in reaper project path.
---
--- Project word list usage example:
--- Project name is "test_project" and path is "C:\regionNamingToolSettings\foobar.lua"
--- Current reaper project is C:\reaper_project\test_project\ENE_Megamonster.rpp"
--- RegionNamingTool uses list box values defined in C:\regionNamingToolSettings\foobar.lua, because word test_project was found in project path name.
---
--- projects-button opens project word list in text editor.
--- RegionNamingTool-folder contains rnt_example.lua, which can be used as a base for project specific word list
---
--- Additional info:
--- Previously used values are automatically saved inside reaper project file.
+--  Requires Lokasenna's GUI library v2 for Lua.
+--  ReaTeam Scripts has it. Use ReaPack to download it from this repo: https://github.com/ReaTeam/ReaScripts/raw/master/index.xml
+--  or downloaded directly from here: https://github.com/jalovatt/Lokasenna_GUI
+--  After you have installed it you might need to run action Script: Set Lokasenna_GUI v2 library path.lua
+--  
+--  Basic usage:
+--   Create regions in reaper
+--   Create timeline selection which has the regions inside
+--   Run the script
+--   Select and/or type words to fields. (For example select PLR, empty field, footstep and type "dirt" into last textbox)
+--   press rename-button. All regions inside timeline selection are renamed to specified word combination. (PLR_footstep_dirt in example)
+--   Second list box supports multiselection with both control and shift. Items are always processed in order from top to bottom.
+--  
+--  Settings:
+--   Press global-button. Settings file should open in text editor.
+--   textEditorExecutable is path of text editor which opens settings files. notepad.exe is used by default.
+--   ListBox1ValuesDefault and listBox2ValuesDefault contain word list of two list boxes in RegionNamingTool UI. These are used when no project settings file is found.
+--   projects contains paths to project-specific word lists. First value is project name and second name is path of project word list.
+--   project-specific word list is used if project name is found in reaper project path.
+--  
+--  Project word list usage example:
+--   Project name is "test_project" and path is "C:\regionNamingToolSettings\foobar.lua"
+--   Current reaper project is C:\reaper_project\test_project\ENE_Megamonster.rpp"
+--   RegionNamingTool uses list box values defined in C:\regionNamingToolSettings\foobar.lua, because word test_project was found in project path name.
+--  
+--  projects-button opens project word list in text editor.
+--   RegionNamingTool-folder contains rnt_example.lua, which can be used as a base for project specific word list
+--  
+--  Additional info:
+--   Previously used values are automatically saved inside reaper project file.
 
 function reaperDoFile(file) local info = debug.getinfo(1,'S'); script_path = info.source:match[[^@?(.*[\/])[^\/]-$]]; dofile(script_path .. file); end
 
