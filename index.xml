@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" commit="3a04f4ae5581055040033ba9e2e09f996dc95433">
+<index version="1" commit="db75c820335d9f99b46441dd981fc5bd26f5b465">
   <category name="NextVariation">
     <reapack name="NextVariation.lua" type="script" desc="Next Variation">
       <metadata>
@@ -30,6 +30,9 @@
       </version>
       <version name="1.01" author="Demoji / Sauli" time="2022-03-15T12:34:16Z">
         <source main="main">https://github.com/saul-l/REAPER-Bits-and-bobs/raw/b426d1743618c462a5d3e692ca28245964d954d6/NextVariation/NextVariation.lua</source>
+      </version>
+      <version name="1.02" author="saul-l / Sauli" time="2024-04-30T21:20:35Z">
+        <source main="main">https://github.com/saul-l/REAPER-Bits-and-bobs/raw/db75c820335d9f99b46441dd981fc5bd26f5b465/NextVariation/NextVariation.lua</source>
       </version>
     </reapack>
   </category>
