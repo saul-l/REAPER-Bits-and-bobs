@@ -1,4 +1,9 @@
-
+-- @description Split and Keep Fade Curves
+-- @author saul-l / Sauli
+-- @version 1.00
+-- @about
+--
+-- Splits and keeps fade curves
   worthUndoing = false
   prevsel_items = {}
   init_sel_items = {}

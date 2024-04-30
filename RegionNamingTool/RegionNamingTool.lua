@@ -1,5 +1,9 @@
--- Work in progress region naming tool
-
+-- @description Region Naming Tool
+-- @author saul-l / Sauli
+-- @version 1.00
+-- @about
+-- Region naming tool
+--
 -- Requires Lokasenna's GUI library v2 for Lua.
 -- ReaTeam Scripts has it. Use ReaPack to download it from this repo: https://github.com/ReaTeam/ReaScripts/raw/master/index.xml
 -- or downloaded directly from here: https://github.com/jalovatt/Lokasenna_GUI
