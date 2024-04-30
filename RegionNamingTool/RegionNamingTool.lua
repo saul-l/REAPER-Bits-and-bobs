@@ -1,8 +1,8 @@
 -- @description Region Naming Tool
 -- @author saul-l / Sauli
 -- @version 1.00
--- @provides:
---   RegionNamingTool/*
+-- @provides
+--   RegionNamingTool/*.lua
 --   [main] RegionNamingTool.lua
 -- @about
 --  # Region naming tool
