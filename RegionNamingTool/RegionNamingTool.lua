@@ -3,6 +3,7 @@
 -- @version 1.00
 -- @provides:
 --   RegionNamingTool/*
+--   [main] RegionNamingTool.lua
 -- @about
 --  # Region naming tool
 --

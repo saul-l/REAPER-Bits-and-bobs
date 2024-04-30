@@ -1,3 +1,4 @@
+-- @noindex
 listBox1ValuesDefault = {
 	"",
 	"EXMPL"

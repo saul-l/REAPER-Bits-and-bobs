@@ -1,3 +1,4 @@
+-- @noindex
 textEditorExecutable = "notepad.exe"
 
 listBox1ValuesDefault = {
