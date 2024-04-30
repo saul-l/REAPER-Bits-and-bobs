@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" commit="db75c820335d9f99b46441dd981fc5bd26f5b465">
+<index version="1" name="Sauli's REAPER Bits and bobs" commit="db75c820335d9f99b46441dd981fc5bd26f5b465">
   <category name="NextVariation">
     <reapack name="NextVariation.lua" type="script" desc="Next Variation">
       <metadata>
