@@ -11,4 +11,4 @@ Currently content:
 - Naming tool, which makes it easy to name multiple regions at once and allows using custom word lists
 
 **Split and Keep Fade Curves**
-- Does exactly what name implies. I got tired of split working how I wanted it to work
+- Does exactly what name implies. I got tired of split not working how I wanted it to work
