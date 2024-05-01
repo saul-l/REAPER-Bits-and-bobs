@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="Sauli's REAPER Bits and bobs" commit="a41ceadeadf3cab7443ff914f6fa725202eb769c">
+<index version="1" name="Sauli's REAPER Bits and bobs" commit="3e93ebc41724a888e93118c28745f5cab11223cd">
   <category name="NextVariation">
     <reapack name="NextVariation.lua" type="script" desc="Next Variation">
       <metadata>
@@ -42,6 +42,11 @@
         <source file="RegionNamingTool/RegionNamingToolSettings.lua">https://github.com/saul-l/REAPER-Bits-and-bobs/raw/9cbc0a03b852d1b3156993b52a42981225e591d1/RegionNamingTool/RegionNamingTool/RegionNamingToolSettings.lua</source>
         <source file="RegionNamingTool/rnt_example.lua">https://github.com/saul-l/REAPER-Bits-and-bobs/raw/9cbc0a03b852d1b3156993b52a42981225e591d1/RegionNamingTool/RegionNamingTool/rnt_example.lua</source>
         <source main="main">https://github.com/saul-l/REAPER-Bits-and-bobs/raw/9cbc0a03b852d1b3156993b52a42981225e591d1/RegionNamingTool/RegionNamingTool.lua</source>
+      </version>
+      <version name="1.01" author="saul-l / Sauli" time="2024-05-01T00:12:28Z">
+        <source file="RegionNamingTool/RegionNamingToolSettings.lua">https://github.com/saul-l/REAPER-Bits-and-bobs/raw/3e93ebc41724a888e93118c28745f5cab11223cd/RegionNamingTool/RegionNamingTool/RegionNamingToolSettings.lua</source>
+        <source file="RegionNamingTool/rnt_example.lua">https://github.com/saul-l/REAPER-Bits-and-bobs/raw/3e93ebc41724a888e93118c28745f5cab11223cd/RegionNamingTool/RegionNamingTool/rnt_example.lua</source>
+        <source main="main">https://github.com/saul-l/REAPER-Bits-and-bobs/raw/3e93ebc41724a888e93118c28745f5cab11223cd/RegionNamingTool/RegionNamingTool.lua</source>
       </version>
     </reapack>
   </category>
