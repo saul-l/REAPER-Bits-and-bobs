@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="Sauli's REAPER Bits and bobs" commit="3e93ebc41724a888e93118c28745f5cab11223cd">
+<index version="1" name="Sauli's REAPER Bits and bobs" commit="e9f3b8cd97e951216312da0a758d1cb56ac87fab">
   <category name="NextVariation">
     <reapack name="NextVariation.lua" type="script" desc="Next Variation">
       <metadata>
@@ -47,6 +47,16 @@
         <source file="RegionNamingTool/RegionNamingToolSettings.lua">https://github.com/saul-l/REAPER-Bits-and-bobs/raw/3e93ebc41724a888e93118c28745f5cab11223cd/RegionNamingTool/RegionNamingTool/RegionNamingToolSettings.lua</source>
         <source file="RegionNamingTool/rnt_example.lua">https://github.com/saul-l/REAPER-Bits-and-bobs/raw/3e93ebc41724a888e93118c28745f5cab11223cd/RegionNamingTool/RegionNamingTool/rnt_example.lua</source>
         <source main="main">https://github.com/saul-l/REAPER-Bits-and-bobs/raw/3e93ebc41724a888e93118c28745f5cab11223cd/RegionNamingTool/RegionNamingTool.lua</source>
+      </version>
+      <version name="1.03" author="saul-l / Sauli" time="2024-05-03T22:20:12Z">
+        <changelog><![CDATA[- Settings will survive updates after this update.
+- Your settings have been nuked. Sorry for that.
+- Empty values clear region name
+- Console message displayed, if project settings are not found, instead of opening empty text editor.
+- Possibly works on Mac now. 100% untested blind coding.]]></changelog>
+        <source file="RegionNamingTool/RegionNamingToolSettings.lua">https://github.com/saul-l/REAPER-Bits-and-bobs/raw/e9f3b8cd97e951216312da0a758d1cb56ac87fab/RegionNamingTool/RegionNamingTool/RegionNamingToolSettings.lua</source>
+        <source file="RegionNamingTool/rnt_example.lua">https://github.com/saul-l/REAPER-Bits-and-bobs/raw/e9f3b8cd97e951216312da0a758d1cb56ac87fab/RegionNamingTool/RegionNamingTool/rnt_example.lua</source>
+        <source main="main">https://github.com/saul-l/REAPER-Bits-and-bobs/raw/e9f3b8cd97e951216312da0a758d1cb56ac87fab/RegionNamingTool/RegionNamingTool.lua</source>
       </version>
     </reapack>
   </category>
