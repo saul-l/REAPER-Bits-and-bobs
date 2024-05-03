@@ -1,5 +1,9 @@
 -- @noindex
-textEditorExecutable = "notepad.exe"
+versionNumber = 103
+-- DO NOT edit the versionNumber
+
+winTextEditorExecutable = "notepad.exe"
+macTextEditorExecutable = "TextEdit"
 
 listBox1ValuesDefault = {
 	"",
@@ -27,7 +31,7 @@ listBox2ValuesDefault = {
 	"jump",
 	"shoot",
 	"melee",
-	"move",
+	"slide",
 	"roll",
 	"collision",
 	"loop",
@@ -35,8 +39,10 @@ listBox2ValuesDefault = {
 	"end"
 	}
 
--- In following example any project which has projectName in its full path uses rnt_projectName.lua as listbox values instead of defaults
+-- In following example any project which has projectName in full path uses rnt_projectName.lua as listbox values instead of defaults
 -- For example reaper project with full path c:/reaper_projects/projectName/enemy_test.rpp would use projectName, because it's under projectName folder
+-- Windows users note: replace \ with /
+
 projects = {
 	"projectName", "C:/reaper_projects/projectName/rnt_projectName.lua"	
 	}

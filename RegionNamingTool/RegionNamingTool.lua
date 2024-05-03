@@ -1,6 +1,6 @@
 -- @description Region Naming Tool
 -- @author saul-l / Sauli
--- @version 1.01
+-- @version 1.03
 -- @provides
 --   RegionNamingTool/*.lua
 --   [main] RegionNamingTool.lua
@@ -35,8 +35,12 @@
 --  
 --  **Additional info:**  
 --   Previously used values are automatically saved inside reaper project file.
-
-function reaperDoFile(file) local info = debug.getinfo(1,'S'); script_path = info.source:match[[^@?(.*[\/])[^\/]-$]]; dofile(script_path .. file); end
+-- @changelog
+--   - Settings will survive updates after this update.
+--   - Your settings have been nuked. Sorry for that.
+--   - Empty values clear region name
+--   - Console message displayed, if project settings are not found, instead of opening empty text editor.
+--   - Possibly works on Mac now. 100% untested blind coding.
 
 local regionNamingToolActionName = "Custom: RegionNamingTool.lua"
 
@@ -76,35 +80,9 @@ GUI.x, GUI.y, GUI.w, GUI.h = 0, 0, 300, 640
 GUI.anchor, GUI.corner = "mouse", "C"
 
 function get_script_path()
-  local path_line = nil
-  local kb_ini_path = reaper.GetResourcePath() .. "\\" .. "reaper-kb.ini"
-  if reaper.file_exists(kb_ini_path) then
-    for line in io.lines(kb_ini_path) do
-      if string.find(line, regionNamingToolActionName) then
-        path_line = line
-      end   
-    end
-  end
-  
-  if path_line == nil then
-    reaper.ShowConsoleMsg(regionNamingToolActionName .. " not found! \n")
-  else
-    path_line = path_line:match("^.-\".-\"(.+)")
-    path_line = path_line:gsub("\"","")
-  end
-   
-  path_line = path_line:sub(2)
- 
-  if string.find(path_line, ":") then
-    path_line = path_line:gsub("RegionNamingTool.lua", "")
-  else
-    path_line = path_line:gsub("RegionNamingTool.lua", "")
-    path_line = reaper.GetResourcePath() .. "\\Scripts\\" .. path_line
-  end
-  
-  path_line = path_line:gsub("\\", "/")
-    
-  return path_line
+  local info = debug.getinfo(1,'S')
+  local script_path = info.source:match[[^@?(.*[\/])[^\/]-$]]
+  return script_path
 end
 
 -- serializeTable from stack overflow user Henrik Ilgen
@@ -140,6 +118,18 @@ function serializeTable(val, name, skipnewlines, depth)
     end
   
     return tmp
+end
+
+-- get_line from stackoverflow user cyclaminist
+function get_line(filename, line_number)
+  local i = 0
+  for line in io.lines(filename) do
+    i = i + 1
+    if i == line_number then
+      return line
+    end
+  end
+  return nil -- line not found
 end
 
 function saveData()
@@ -282,31 +272,125 @@ function addToMarkerName()
     indexPosition = marker[1]
     if indexPosition == 0 then break end
     if (marker[2]) and (marker[3] >= timeSelectionStart) and (marker[3] <= timeSelectionEnd) then
+      if newRegionName == "" then
+        reaper.SetProjectMarker4(0, marker[6], marker[2], marker[3], marker[4], newRegionName, 0, 1)
+      else
         reaper.SetProjectMarker(marker[6], marker[2], marker[3], marker[4], newRegionName)
       end
+    end
   end
   
 end
 
 function globalConfig()
-  os.execute("start " .. textEditorExecutable .. " " .. script_path .. "/RegionNamingTool/RegionNamingToolSettings.lua")
+  if reaper.GetOS() == "Win32" or reaper.GetOS() == "Win64" then
+    os.execute("start " .. winTextEditorExecutable .. " " .. script_path .. "/RegionNamingTool/RegionNamingToolSettings.lua")
+  else
+    os.execute("open -a " .. macTextEditorExecutable .. " " .. script_path .. "/RegionNamingTool/RegionNamingToolSettings.lua")
+  end
 end
 
 function projectConfig()
-  os.execute("start " .. textEditorExecutable .. " " .. activeProjectSettings)
+  if reaper.file_exists(activeProjectSettings) then
+    if reaper.GetOS() == "Win32" or reaper.GetOS() == "Win64" then
+      os.execute("start " .. winTextEditorExecutable .. " " .. activeProjectSettings)
+    else
+      os.execute("open -a " .. macTextEditorExecutable .. " " .. activeprojectSettings)
+    end
+  else
+    reaper.ShowConsoleMsg("No project settings found!\n")
+  end
+  
 end
+
+function updateSettings(currentSettings, newSettings, newVersion)
+  local tempFile = script_path .. "/RegionNamingTool/tempSettings.lua"
+  local file = io.open(currentSettings, "r")
+  local settingsFileContent = {}
+  local i = 0
+  
+  for line in file:lines() do
+    i = i + 1
+    if i == 2 then
+      table.insert(settingsFileContent, "versionNumber = " .. newVersion .."\n")
+    else
+      table.insert(settingsFileContent, line .. "\n")
+    end
+  end
+  file:close()
+  
+  file = io.open(newSettings, "r")
+  i = 0
+  for line in file:lines() do
+    i = i + 1
+    if i ~= 1 then
+      table.insert(settingsFileContent, line .. "\n")
+    end
+  end
+  file:close()
+  
+  if reaper.file_exists(tempFile) then
+    os.remove(tempFile)
+  end
+    
+  file = io.open(tempFile, "a")
+  for _, line in ipairs(settingsFileContent) do
+   file:write(line)
+  end
+  file:close()
+  
+  os.remove(currentSettings)
+  os.rename(tempFile, currentSettings)
+  
+end
+
+function defaultSettings(localSettings)
+  defaultSettingsLocation = script_path .. "/RegionNamingTool/RegionNamingToolSettings.lua"
+
+  local file = io.open(defaultSettingsLocation, "r")
+  local defaultSettingsContent = {}
+  for line in file:lines() do
+      table.insert(defaultSettingsContent, line .. "\n")
+  end
+  
+  file:close()
+  
+  local tempFile = script_path .. "/RegionNamingTool/tempSettings.lua"
+  if reaper.file_exists(tempFile) then
+    os.remove(tempFile)
+  end 
+  
+  file = io.open(tempFile, "a")
+  for _, line in ipairs(defaultSettingsContent) do
+   file:write(line)
+  end
+  file:close()
+  
+  os.rename(tempFile, localSettings)
+  
+end
+
 -- functions end here
 
 
 script_path = get_script_path()
 
-if reaper.file_exists(script_path .. "/RegionNamingTool/RegionNamingToolSettings.lua") then
-  dofile(script_path .. "/RegionNamingTool/RegionNamingToolSettings.lua")
+localSettingsLocation = script_path .. "/RegionNamingTool/UserSettings.lua"
+newSettingsLocation = script_path .. "/RegionNamingTool/NewSettings.lua"
+if reaper.file_exists(localSettingsLocation) then
+  if reaper.file_exists(newSettingsLocation) then
+    assert(pcall(load(get_line(localSettingsLocation, 2))),"invalid user settings file! " .. localSettingsLocation .. "\n")
+    pcall(load(get_line(newSettingsLocation, 1)))
+    if versionNumber<newVersionNumber then
+      updateSettings(localSettingsLocation, newSettingsLocation, newVersionNumber)
+    end
+  end
 else
-   reaper.ShowConsoleMsg("Settings file not found! \n")
+  defaultSettings(localSettingsLocation)
 end
 
-
+  dofile(localSettingsLocation)
+  
 for i = 1, #projects, 2
 do
   if string.find(path, projects[i]) then
@@ -323,7 +407,6 @@ end
 
 if (projectSettings > 1) then
   reaper.ShowConsoleMsg("Multiple matching project settings files! \n")
-  return 0 
 end
 
 
