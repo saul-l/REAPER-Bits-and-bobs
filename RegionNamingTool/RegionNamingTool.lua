@@ -6,7 +6,8 @@
 --   [main] RegionNamingTool.lua
 --  # Region naming tool
 --  
---  Requires Lokasenna's GUI library v2 for Lua.  
+--  Requires Lokasenna's GUI library v2 for Lua.
+--  RegionNamingTool should automatically help installing it, but in case that doesn't work:  
 --  Use ReaPack to download it from this repo: https://github.com/ReaTeam/ReaScripts/raw/master/index.xml  
 --  or downloaded directly from here: https://github.com/jalovatt/Lokasenna_GUI  
 --  After installation you might need to run action Script: Set Lokasenna_GUI v2 library path.lua  
@@ -41,6 +42,35 @@
 --   - Empty values clear region name
 --   - Console message displayed, if project settings are not found, instead of opening empty text editor.
 --   - Possibly works on Mac now. 100% untested blind coding.
+
+-- Check Lokasenna_GUI library availability --
+-- Originally by Amagalma https://github.com/amagalma
+
+local lib_path = reaper.GetExtState("Lokasenna_GUI", "lib_path_v2")
+if not lib_path or lib_path == "" or not reaper.file_exists(lib_path .. "Core.lua") then
+  local not_installed = false
+  local Core_library = {reaper.GetResourcePath(), "Scripts", "ReaTeam Scripts", "Development", "Lokasenna_GUI v2", "Library", "Core.lua"}
+  local sep = reaper.GetOS():find("Win") and "\\" or "/"
+  Core_library = table.concat(Core_library, sep)
+  if reaper.file_exists(Core_library) then
+    local cmdID = reaper.NamedCommandLookup( "_RS1c6ad1164e1d29bb4b1f2c1acf82f5853ce77875" )
+    if cmdID > 0 then
+          reaper.MB("Lokasenna's GUI path will be set now. Please, re-run the script", "Lokasenna GUI v2 Installation", 0)
+      -- Set Lokasenna_GUI v2 library path.lua
+      reaper.Main_OnCommand(cmdID, 0)
+      return reaper.defer(function() end)
+    else
+      not_installed = true
+    end
+  else
+    not_installed = true
+  end
+  if not_installed then
+    reaper.MB("Please, right-click and install 'Lokasenna's GUI library v2 for Lua' in the next window. Then run the 'Set Lokasenna_GUI v2 library path.lua' script in your Action List. After all is set, you can run this script again. Thanks!", "Install Lokasenna GUI v2", 0)
+    reaper.ReaPack_BrowsePackages( "Lokasenna GUI library v2 for Lua" )
+    return reaper.defer(function() end)
+  end
+end
 
 local regionNamingToolActionName = "Custom: RegionNamingTool.lua"
 
