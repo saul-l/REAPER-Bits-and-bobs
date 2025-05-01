@@ -2,6 +2,7 @@
 
 ReaPack compatible repository for my random REAPER scripts and jsfx
 
+Raw index url for ReaPack: https://raw.githubusercontent.com/saul-l/REAPER-Bits-and-bobs/refs/heads/master/index.xml
 Currently content:
 
 **Next Variation**
