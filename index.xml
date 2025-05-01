@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="Sauli's REAPER Bits and bobs" commit="e9f3b8cd97e951216312da0a758d1cb56ac87fab">
+<index version="1" name="Sauli's REAPER Bits and bobs" commit="149bf6882ce4b7b43e54b0d245a545689df63eb3">
   <category name="NextVariation">
     <reapack name="NextVariation.lua" type="script" desc="Next Variation">
       <metadata>
@@ -33,6 +33,26 @@
       </version>
       <version name="1.02" author="saul-l / Sauli" time="2024-04-30T21:20:35Z">
         <source main="main">https://github.com/saul-l/REAPER-Bits-and-bobs/raw/db75c820335d9f99b46441dd981fc5bd26f5b465/NextVariation/NextVariation.lua</source>
+      </version>
+    </reapack>
+  </category>
+  <category name="PeakEnvelopeGenerator">
+    <reapack name="saul-l_peak_envelope_generator.lua" type="script" desc="Peak envelope generator">
+      <metadata>
+        <description><![CDATA[{\rtf1\ansi\deff0{\fonttbl{\f0 \fswiss Helvetica;}{\f1 \fmodern Courier;}}
+{\colortbl;\red255\green0\blue0;\red0\green0\blue255;}
+\widowctrl\hyphauto
+
+{\pard \ql \f0 \sa180 \li0 \fi0 \outlinelevel0 \b \fs36 Peak envelope generator\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Generates envelope based on audio item peaks. You can think of it as an offline audio source parameter baker.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Requires ReaImGui, but will prompt you to install it and provide ReaPack repo, if you don't already have it.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Contains built-in documentation in UI.\par}
+{\pard \ql \f0 \sa180 \li0 \fi0 Only works with FX envelopes at the moment\par}
+}
+]]></description>
+      </metadata>
+      <version name="1.0" author="saul-l" time="2025-05-01T17:48:16Z">
+        <source main="main">https://github.com/saul-l/REAPER-Bits-and-bobs/raw/149bf6882ce4b7b43e54b0d245a545689df63eb3/PeakEnvelopeGenerator/saul-l_peak_envelope_generator.lua</source>
       </version>
     </reapack>
   </category>
