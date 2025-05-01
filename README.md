@@ -8,7 +8,6 @@ Currently content:
 
 Sound design workflow improvement plugin for automatically moving item audio content start position to next variation.
 
-
 **Region Naming Tool**
 
 Naming tool, which makes it easy to name multiple regions at once and allows using custom word lists
@@ -20,3 +19,15 @@ Requires Lokasenna's GUI library v2 for Lua.
 **Split and Keep Fade Curves**
 
 Does exactly what name implies. I got tired of split not working how I wanted it to work
+
+**Peak Envelope Generator**
+
+Generates envelope based on audio item peaks.
+You can think of it as an offline audio source parameter baker.
+
+Requires ReaImGui, but will prompt you to install it and provide ReaPack repo,
+if you don't already have it.
+
+Contains built-in documentation in UI.
+
+Only works with FX envelopes at the moment
