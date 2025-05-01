@@ -1,6 +1,6 @@
 -- @description Peak envelope generator
 -- @author saul-l
--- @version 1.0
+-- @version 1.01
 -- @about
 --   # Peak envelope generator
 -- 
@@ -214,7 +214,7 @@ end
           scalingPrev ~= scaling or
           offsetPrev ~= offset then
             if envChanged == false then
-            reaper.ShowConsoleMsg("autogen values changed \n")
+            -- reaper.ShowConsoleMsg("autogen values changed \n")
             applyAutoGen = true
             end
        end  
