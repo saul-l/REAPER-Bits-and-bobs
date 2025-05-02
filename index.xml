@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="Sauli's REAPER Bits and bobs" commit="fe0c0336d19a673690d46d1df6aee93dc56a49d5">
+<index version="1" name="Sauli's REAPER Bits and bobs" commit="384f4f947299a6c0ecb57ace3ef00731d3840c6a">
   <category name="NextVariation">
     <reapack name="NextVariation.lua" type="script" desc="Next Variation">
       <metadata>
@@ -56,6 +56,10 @@
       </version>
       <version name="1.01" author="saul-l" time="2025-05-01T18:08:57Z">
         <source main="main">https://github.com/saul-l/REAPER-Bits-and-bobs/raw/fe0c0336d19a673690d46d1df6aee93dc56a49d5/PeakEnvelopeGenerator/saul-l_peak_envelope_generator.lua</source>
+      </version>
+      <version name="1.015" author="saul-l" time="2025-05-02T05:27:49Z">
+        <changelog><![CDATA[Undo name changed and ReaPack site opener should work with linux now. 1.015 brings this to parity with 1.01 in ReaTeam Scripts]]></changelog>
+        <source main="main">https://github.com/saul-l/REAPER-Bits-and-bobs/raw/384f4f947299a6c0ecb57ace3ef00731d3840c6a/PeakEnvelopeGenerator/saul-l_peak_envelope_generator.lua</source>
       </version>
     </reapack>
   </category>
