@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<index version="1" name="Sauli's REAPER Bits and bobs" commit="384f4f947299a6c0ecb57ace3ef00731d3840c6a">
+<index version="1" name="Sauli's REAPER Bits and bobs" commit="f701a0472cd1d9917aa98db4ea887b7b6ddb3625">
   <category name="NextVariation">
     <reapack name="NextVariation.lua" type="script" desc="Next Variation">
       <metadata>
@@ -60,6 +60,10 @@
       <version name="1.015" author="saul-l" time="2025-05-02T05:27:49Z">
         <changelog><![CDATA[Undo name changed and ReaPack site opener should work with linux now. 1.015 brings this to parity with 1.01 in ReaTeam Scripts]]></changelog>
         <source main="main">https://github.com/saul-l/REAPER-Bits-and-bobs/raw/384f4f947299a6c0ecb57ace3ef00731d3840c6a/PeakEnvelopeGenerator/saul-l_peak_envelope_generator.lua</source>
+      </version>
+      <version name="1.02" author="saul-l" time="2025-05-02T06:54:38Z">
+        <changelog><![CDATA[Fixed Smooth not working properly, unless envelope is manually selected]]></changelog>
+        <source main="main">https://github.com/saul-l/REAPER-Bits-and-bobs/raw/f701a0472cd1d9917aa98db4ea887b7b6ddb3625/PeakEnvelopeGenerator/saul-l_peak_envelope_generator.lua</source>
       </version>
     </reapack>
   </category>
