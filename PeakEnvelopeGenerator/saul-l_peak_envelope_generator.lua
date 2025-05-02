@@ -1,7 +1,7 @@
 -- @description Peak envelope generator
 -- @author saul-l
--- @version 1.015
--- @changelog Undo name changed and ReaPack site opener should work with linux now. 1.015 brings this to parity with 1.01 in ReaTeam Scripts
+-- @version 1.02
+-- @changelog Fixed Smooth not working properly, unless envelope is manually selected
 -- @about
 --   # Peak envelope generator
 --
@@ -131,7 +131,10 @@ function CalculateEnvelope()
            reaper.InsertEnvelopePoint(env, starttime + (k-1)*ticklen*.5, scaleFunc(peak), 0,  0, true) 
         end
         
-        if smooth then reaper.Main_OnCommand(42208,0) end
+        if smooth then
+          if reaper.GetSelectedEnvelope(0) ~= env then reaper.SetCursorContext(2,env) end
+          reaper.Main_OnCommand(42208,0)
+        end
     end
  end
   
