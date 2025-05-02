@@ -102,7 +102,7 @@ function CalculateEnvelope()
         local peaks = {}
         local len = reaper.GetMediaItemInfo_Value(item, "D_LENGTH")
         local starttime = reaper.GetMediaItemInfo_Value(item, "D_POSITION")
-        local numsamples = math.floor(len*lpeakrate + 0.5)
+        local numsamples = math.max(1,math.floor(len*lpeakrate + 0.5))
         local ticklen = len/numsamples
         local buf = reaper.new_array(2*numsamples)
         buf.clear()
