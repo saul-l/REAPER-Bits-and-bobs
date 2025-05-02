@@ -1,15 +1,16 @@
 -- @description Peak envelope generator
 -- @author saul-l
--- @version 1.01
+-- @version 1.015
+-- @changelog Undo name changed and ReaPack site opener should work with linux now. 1.015 brings this to parity with 1.01 in ReaTeam Scripts
 -- @about
 --   # Peak envelope generator
--- 
+--
 --   Generates envelope based on audio item peaks.
 --   You can think of it as an offline audio source parameter baker.
--- 
+--
 --   Requires ReaImGui, but will prompt you to install it and provide ReaPack repo,
 --   if you don't already have it.
--- 
+--
 --   Contains built-in documentation in UI.
 --
 --   Only works with FX envelopes at the moment
@@ -20,8 +21,10 @@ if not reaper.ImGui_GetBuiltinPath then
     reaper.MB("Attempting to open ReaPack failed. Visit https://reapack.com/", "No ReaPack found", 0)
     if reaper.GetOS() == "Win32" or reaper.GetOS() == "Win64" then
       os.execute('start https://reapack.com')
-    else
+    elseif reaper.GetOS() == "OSX32" or reaper.GetOS() == "OSX64" or reaper.GetOS() == "macOS-arm64" then
       os.execute('open https://reapack.com')
+    else
+      os.execute('xdg-open https://reapack.com')
     end
   end
 return
@@ -141,7 +144,7 @@ function CalculateEnvelope()
     if smooth then reaper.Main_OnCommand(40331,0) end
     selectedItems = SaveSelectedItems()
     CalculateEnvelope()
-    reaper.Undo_EndBlock("peakEnvelope", -1)
+    reaper.Undo_EndBlock("Peak envelope generator", -1)
     reaper.PreventUIRefresh(-1)
     reaper.UpdateArrange()
  end
@@ -271,4 +274,3 @@ end
  end
  
  reaper.defer(loop)
- 
