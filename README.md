@@ -8,7 +8,10 @@ Currently content:
 
 **Next Variation**
 
-Sound design workflow improvement plugin for automatically moving item audio content start position to next variation.
+Sound design workflow improvement plugin for rapidly going through multi-variation audio files.
+Moves audio item content start position to next variation found in item.
+
+No configuration UI, since it uses built-in transient detection. Action "Transient detection sensitivity/threshold: Adjust..." can be used to configure sensitivity.
 
 
 **Region Naming Tool**
